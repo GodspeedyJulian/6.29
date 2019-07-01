@@ -18,15 +18,11 @@ def texts_to_words(text_list):
     for i in text_list:
         my_substitutions = i.maketrans(
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&()*+,-./:;<=>?@[]^_`{|}~'\\",
-      "abcdefghijklmnopqrstuvwxyz                                          ")
+      "abcdefghijklmnopqrstuvwxyz                                          ")#？
         cleaned_text = i.translate(my_substitutions)
         wds = cleaned_text.split()
         words += wds
     return words
-def uniquelize(alist):
-    alist = ' '.join(alist).split()
-    alist = list(set(alist))
-    return alist
 def word_not_in_count(file,vocab):
     words = uniquelize(texts_to_words(extract_words_from_file(file)))
     words_not_in = []
@@ -34,7 +30,6 @@ def word_not_in_count(file,vocab):
     for i in words:
         if not find_element(vocab_list,i):
             words_not_in.append(i)
-    return len(words_not_in)
 if __name__ == '__main__':           #  read file
     file = r'C:\Users\邓洁\Desktop\AIW.txt'
     vocab = r'C:\Users\邓洁\Desktop\VOCAB.txt'
